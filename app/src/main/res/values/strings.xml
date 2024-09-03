@@ -8,4 +8,8 @@
     </string>
     <string name="tb_option_1">Agregar contactos</string>
     <string name="tb_option_2">Listado de contactos</string>
+    <string name="tv_nombre">Nombre</string>
+    <string name="tv_apellido">Apellido</string>
+    <string name="tv_telefono">Teléfono</string>
+
 </resources>
