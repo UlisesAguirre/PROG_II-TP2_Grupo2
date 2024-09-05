@@ -11,5 +11,8 @@
     <string name="tv_nombre">Nombre</string>
     <string name="tv_apellido">Apellido</string>
     <string name="tv_telefono">Teléfono</string>
+    <string name="tv_email">Email</string>
+    <string name="tv_direccion">Direccion</string>
+    <string name="tv_nacimiento">Fecha de nacimiento</string>
 
 </resources>
