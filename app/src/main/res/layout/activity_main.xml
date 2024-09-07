@@ -14,7 +14,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_main"
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#009688"
             android:minHeight="?attr/actionBarSize"
@@ -168,8 +168,9 @@
                     android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Continuar"
                     android:backgroundTint="@android:color/darker_gray"
+                    android:onClick="listado_contactos"
+                    android:text="Continuar"
                     android:textColor="@android:color/white" />
             </LinearLayout>
         </ScrollView>

@@ -1,5 +1,6 @@
 package com.example.tp2_grupo2;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -58,6 +59,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.overflow, menu);
         return true;
+    }
+
+    public void listado_contactos(View view){
+        Intent intent = new Intent(this, ListadoContactos.class);
+        startActivity(intent);
     }
 
 

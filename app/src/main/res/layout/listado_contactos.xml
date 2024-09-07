@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/tb_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#009688"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:title="@string/header_main"
+            app:titleTextColor="#FFFFFF"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/title_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/title_main"
+            android:textColor="#979797"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/description_main"
+            android:layout_width="351dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/description_listado"
+            android:textColor="#989898"
+            android:textSize="16sp"
+            tools:ignore="MissingConstraints" />
+
+        <!-- Nivel de estudios alcanzados -->
+        <TextView
+            android:id="@+id/text_nivel_estudios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Nivel de estudios alcanzados"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/radio_group_nivel_estudios"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_primario_incompleto"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="Primario incompleto" />
+
+            <RadioButton
+                android:id="@+id/radio_primario_completo"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="Primario completo" />
+
+            <RadioButton
+                android:id="@+id/radio_secundario_incompleto"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="Secundario incompleto" />
+
+            <RadioButton
+                android:id="@+id/radio_secundario_completo"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="Secundario completo" />
+
+            <RadioButton
+                android:id="@+id/radio_otros"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:text="Otros" />
+
+        </RadioGroup>
+
+        <!-- Nuevo apartado: Intereses -->
+        <TextView
+            android:id="@+id/text_intereses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:text="Intereses"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <GridLayout
+            android:id="@+id/grid_intereses"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:columnCount="2"
+            android:orientation="horizontal">
+
+            <!-- Columna Izquierda -->
+            <CheckBox
+                android:id="@+id/checkbox_deporte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deporte" />
+
+            <CheckBox
+                android:id="@+id/checkbox_arte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arte" />
+
+            <!-- Columna Derecha -->
+            <CheckBox
+                android:id="@+id/checkbox_musica"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Música" />
+
+            <CheckBox
+                android:id="@+id/checkbox_tecnologia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tecnología" />
+
+        </GridLayout>
+
+        <!-- Switch y texto "Desea recibir información" -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            android:paddingStart="16dp">
+
+            <TextView
+                android:id="@+id/text_recibir_informacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desea recibir información?"
+                android:textSize="18sp" />
+
+            <Switch
+                android:id="@+id/switch_recibir_informacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:checked="false"
+                android:textOff="No"
+                android:textOn="Sí"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+        <!-- Botón Guardar en la parte inferior derecha -->
+        <Button
+            android:id="@+id/button_guardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="16dp"
+            android:minHeight="48dp"
+            android:text="Guardar" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

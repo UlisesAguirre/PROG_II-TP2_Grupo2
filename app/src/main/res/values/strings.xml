@@ -6,6 +6,10 @@
         Este es un formulario destinado al registro de personas,
         sus datos personales e intereses.
     </string>
+    <string name="description_listado">
+        A continuacion, por favor se pide completar
+        mas datos personales.
+    </string>
     <string name="tb_option_1">Agregar contactos</string>
     <string name="tb_option_2">Listado de contactos</string>
     <string name="tv_nombre">Nombre</string>
