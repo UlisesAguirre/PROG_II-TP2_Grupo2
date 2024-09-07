@@ -1,5 +1,8 @@
 package com.example.tp2_grupo2;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +11,7 @@ import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +22,11 @@ public class DatosExtras extends AppCompatActivity {
     private CheckBox cb_deporte, cb_arte, cb_musica, cb_tecnologia;
     private Switch sw_recibirInformacion;
     private Button btn_guardar;
+    private String nivelEstudiosSeleccionado;
+    private boolean recibirInfo;
 
     private String nombre, apellido, telefono, sp_telefono, direccion, email, sp_email, nacimiento;
+    private StringBuilder interesesSeleccionados;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +58,11 @@ public class DatosExtras extends AppCompatActivity {
         sw_recibirInformacion = findViewById(R.id.switch_recibir_informacion);
 
         btn_guardar = findViewById(R.id.button_guardar);
-
-        btn_guardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                obtenerTodasLasSelecciones();
-            }
-        });
     }
 
     private void obtenerTodasLasSelecciones() {
         int selectedId = rg_nivelEstudios.getCheckedRadioButtonId();
-        String nivelEstudiosSeleccionado = "";
+        nivelEstudiosSeleccionado = "";
         if (selectedId == R.id.radio_primario_incompleto) {
             nivelEstudiosSeleccionado = "Primario incompleto";
         } else if (selectedId == R.id.radio_primario_completo) {
@@ -75,7 +75,7 @@ public class DatosExtras extends AppCompatActivity {
             nivelEstudiosSeleccionado = "Otros";
         }
 
-        StringBuilder interesesSeleccionados = new StringBuilder();
+        interesesSeleccionados = new StringBuilder();
         if (cb_deporte.isChecked()) {
             interesesSeleccionados.append("Deporte, ");
         }
@@ -83,19 +83,20 @@ public class DatosExtras extends AppCompatActivity {
             interesesSeleccionados.append("Arte, ");
         }
         if (cb_musica.isChecked()) {
-            interesesSeleccionados.append("Música, ");
+            interesesSeleccionados.append("Musica, ");
         }
         if (cb_tecnologia.isChecked()) {
-            interesesSeleccionados.append("Tecnología");
+            interesesSeleccionados.append("Tecnologia");
         }
 
         if (interesesSeleccionados.length() > 0 && interesesSeleccionados.charAt(interesesSeleccionados.length() - 1) == ' ') {
             interesesSeleccionados.delete(interesesSeleccionados.length() - 2, interesesSeleccionados.length());
         }
 
-        boolean recibirInfo = sw_recibirInformacion.isChecked();
+        recibirInfo = sw_recibirInformacion.isChecked();
 
-        guardarDatos(
+        //Para mostrar por consola si se estaba mandando la data
+       /* guardarDatos(
                 nombre,
                 apellido,
                 telefono,
@@ -107,10 +108,10 @@ public class DatosExtras extends AppCompatActivity {
                 nivelEstudiosSeleccionado,
                 interesesSeleccionados.toString(),
                 recibirInfo
-        );
+        );*/
     }
 
-    private void guardarDatos(
+   /*private void guardarDatos(
             String nombre,
             String apellido,
             String telefono,
@@ -134,5 +135,36 @@ public class DatosExtras extends AppCompatActivity {
         Log.d("DatosGuardados", "Nivel de Estudios: " + nivelEstudiosSeleccionado);
         Log.d("DatosGuardados", "Intereses: " + interesesSeleccionados);
         Log.d("DatosGuardados", "Recibir Informacion: " + recibirInfo);
+
+
+    }*/
+
+    public void btn_Guardar(View view){
+        obtenerTodasLasSelecciones();
+
+        String recibir_Info=  Boolean.toString(recibirInfo);
+        SharedPreferences preferencias = getSharedPreferences("contactos", Context.MODE_PRIVATE);
+        SharedPreferences.Editor obj_editor=preferencias.edit();
+
+        obj_editor.putString("Nombre",nombre);
+        obj_editor.putString("Apellido",apellido);
+        obj_editor.putString("Telefono",telefono);
+        obj_editor.putString("SP_Telefono",sp_telefono);
+        obj_editor.putString("Direccion",direccion);
+        obj_editor.putString("Email",email);
+        obj_editor.putString("SP_Email",sp_email);
+        obj_editor.putString("nacimiento",nacimiento);
+        obj_editor.putString("nivelEstudiosSeleccionado",nivelEstudiosSeleccionado);
+        obj_editor.putString("interesesSeleccionados",interesesSeleccionados.toString());
+        obj_editor.putString("recibirInfo",recibir_Info);
+        obj_editor.putString("FIN_CONTACTO","-");
+        Boolean guardo=obj_editor.commit();
+        Log.d("Guardo", "Guardo: " + guardo.toString());
+        Toast.makeText(this,"Se ha guardado correctamente",Toast.LENGTH_LONG).show();
+
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
     }
+
 }
