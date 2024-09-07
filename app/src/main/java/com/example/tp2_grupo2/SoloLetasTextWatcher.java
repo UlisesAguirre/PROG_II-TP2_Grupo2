@@ -24,7 +24,7 @@ public class SoloLetasTextWatcher implements TextWatcher {
 
         if (!s.toString().equals(filtered)) {
             editText.setText(filtered);
-            editText.setSelection(filtered.length()); // Mover el cursor al final
+            editText.setSelection(filtered.length());
         }
 
         if (s.toString().matches(".*\\d.*")) {

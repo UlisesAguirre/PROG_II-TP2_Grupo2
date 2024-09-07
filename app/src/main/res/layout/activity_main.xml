@@ -168,8 +168,8 @@
                     android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@android:color/darker_gray"
-                    android:onClick="listado_contactos"
+                    android:backgroundTint="#673AB7"
+                    android:onClick="datos_extras"
                     android:text="Continuar"
                     android:textColor="@android:color/white" />
             </LinearLayout>
