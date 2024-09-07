@@ -46,8 +46,8 @@
             tools:ignore="MissingConstraints" />
 
         <ScrollView
-            android:layout_width="409dp"
-            android:layout_height="555dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"

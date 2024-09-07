@@ -96,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
                     intent.putExtra("sp_telefono", sp_telefono.getSelectedItem().toString());
                     intent.putExtra("direccion", txt_direccion.getText().toString());
                     intent.putExtra("email", txt_email.getText().toString());
+                    intent.putExtra("sp_email", sp_email.getSelectedItem().toString());
                     intent.putExtra("nacimiento", txt_nacimiento.getText().toString());
                     startActivity(intent);
                 }
