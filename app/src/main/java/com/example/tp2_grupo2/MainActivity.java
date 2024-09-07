@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -20,11 +21,13 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
     private Spinner sp_telefono;
+    private Spinner sp_email;
     private EditText txt_nombre;
     private EditText txt_apellido;
     private EditText txt_telefono;
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Objetos del activity
         sp_telefono=(Spinner)findViewById(R.id.sp_telefono);
+        sp_email=(Spinner)findViewById(R.id.sp_email);
         txt_nombre = (EditText)findViewById(R.id.txt_nombre);
         txt_apellido = (EditText)findViewById(R.id.txt_apellido);
         txt_telefono = (EditText)findViewById(R.id.txt_telefono);
@@ -62,12 +66,23 @@ public class MainActivity extends AppCompatActivity {
         String[] spinnerOpciones={"Casa","Trabajo","Movil"};
         ArrayAdapter<String> adapter=new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,spinnerOpciones);
         sp_telefono.setAdapter(adapter);
+        sp_email.setAdapter(adapter);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.overflow, menu);
         return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.menu_item_2) {
+            Intent intent = new Intent(this, listaContactos.class);
+            startActivity(intent);
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void datos_extras(View view){
@@ -127,6 +142,9 @@ public class MainActivity extends AppCompatActivity {
     private boolean validarNacimiento() {
         String nacimiento = txt_nacimiento.getText().toString();
 
+        if (nacimiento.length() != 10) {
+            return false;
+        }
         if (nacimiento.isEmpty()) {
             return false;
         }
@@ -136,6 +154,33 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             Date fecha = formatoEsperado.parse(nacimiento);
+            Calendar cal = Calendar.getInstance();
+
+            //fecha actual para validar
+            Date fechaActual = cal.getTime();
+
+            // que sea anterior a la fecha actual
+            if (!fecha.before(fechaActual)) {
+                return false;
+            }
+
+            // Que la fecha no sea demasiada antigua #MirthaLegran't
+            cal.add(Calendar.YEAR, -120);
+            Date fechaLimiteAntigua = cal.getTime();
+
+            if (fecha.before(fechaLimiteAntigua)) {
+                return false;
+            }
+
+            // Y aca que no sea demasiado reciente
+            cal = Calendar.getInstance();
+            cal.add(Calendar.YEAR, -1);
+            Date fechaLimiteReciente = cal.getTime();
+
+            if (fecha.after(fechaLimiteReciente)) {
+                return false;
+            }
+
             return true;
         } catch (ParseException e) {
             return false;
@@ -144,7 +189,6 @@ public class MainActivity extends AppCompatActivity {
 
     private boolean validarMail() {
         String email = txt_email.getText().toString();
-
         if (email.isEmpty()) {
             return false;
         }
