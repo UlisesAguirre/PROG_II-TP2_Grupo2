@@ -1,15 +1,24 @@
 <resources>
     <string name="app_name">TP2_Grupo2</string>
     <string name="header_main">EjercicioControles - Grupo 2</string>
+    <string name="header_lista_contactos">Contactos</string>
     <string name="title_main">FORMULARIO DE CONTACTO</string>
     <string name="description_main">
         Este es un formulario destinado al registro de personas,
         sus datos personales e intereses.
+    </string>
+    <string name="description_listado">
+        A continuacion, por favor se pide completar
+        mas datos personales.
     </string>
     <string name="tb_option_1">Agregar contactos</string>
     <string name="tb_option_2">Listado de contactos</string>
     <string name="tv_nombre">Nombre</string>
     <string name="tv_apellido">Apellido</string>
     <string name="tv_telefono">Teléfono</string>
+    <string name="tv_email">Email</string>
+    <string name="tv_direccion">Direccion</string>
+    <string name="tv_nacimiento">Fecha de nacimiento</string>
+    <string name="et_nacimiento">dd/mm/aaaa</string>
 
 </resources>

@@ -14,7 +14,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_main"
-            android:layout_width="409dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#009688"
             android:minHeight="?attr/actionBarSize"
@@ -46,8 +46,8 @@
             tools:ignore="MissingConstraints" />
 
         <ScrollView
-            android:layout_width="409dp"
-            android:layout_height="555dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -116,6 +116,72 @@
                         android:layout_width="wrap_content"
                         android:layout_height="48dp" />
                 </LinearLayout>
+                <TextView
+                    android:id="@+id/tv_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_email"
+                    android:textSize="20sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <EditText
+                    android:id="@+id/txt_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/tv_email"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/sp_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp" />
+            </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_direccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_direccion"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/txt_direccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/tv_direccion"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/tv_nacimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/tv_nacimiento"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/txt_nacimiento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="@string/et_nacimiento"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#673AB7"
+                    android:onClick="datos_extras"
+                    android:text="Continuar"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>
