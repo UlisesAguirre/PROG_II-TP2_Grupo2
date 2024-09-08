@@ -23,6 +23,11 @@
             app:titleTextColor="#FFFFFF"
             tools:ignore="MissingConstraints" />
 
+        <ListView
+            android:id="@+id/lista_contactos"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

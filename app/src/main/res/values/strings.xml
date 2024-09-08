@@ -2,6 +2,7 @@
     <string name="app_name">TP2_Grupo2</string>
     <string name="header_main">EjercicioControles - Grupo 2</string>
     <string name="header_lista_contactos">Contactos</string>
+    <string name="header_detalle_contactos">Detalle del Contacto</string>
     <string name="title_main">FORMULARIO DE CONTACTO</string>
     <string name="description_main">
         Este es un formulario destinado al registro de personas,

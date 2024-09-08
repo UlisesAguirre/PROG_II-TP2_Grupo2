@@ -13,6 +13,10 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class DatosExtras extends AppCompatActivity {
@@ -139,32 +143,49 @@ public class DatosExtras extends AppCompatActivity {
 
     }*/
 
-    public void btn_Guardar(View view){
+    public void btn_Guardar(View view) {
         obtenerTodasLasSelecciones();
 
-        String recibir_Info=  Boolean.toString(recibirInfo);
+        // Crear un objeto JSON para el contacto
+        JSONObject contacto = new JSONObject();
+        try {
+            contacto.put("nombre", nombre);
+            contacto.put("apellido", apellido);
+            contacto.put("telefono", telefono);
+            contacto.put("spTelefono", sp_telefono);
+            contacto.put("direccion", direccion);
+            contacto.put("email", email);
+            contacto.put("spEmail", sp_email);
+            contacto.put("nacimiento", nacimiento);
+            contacto.put("nivelEstudios", nivelEstudiosSeleccionado);
+            contacto.put("intereses", interesesSeleccionados.toString());
+            contacto.put("recibirInfo", recibirInfo);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Guardar en SharedPreferences
         SharedPreferences preferencias = getSharedPreferences("contactos", Context.MODE_PRIVATE);
-        SharedPreferences.Editor obj_editor=preferencias.edit();
+        SharedPreferences.Editor editor = preferencias.edit();
 
-        obj_editor.putString("Nombre",nombre);
-        obj_editor.putString("Apellido",apellido);
-        obj_editor.putString("Telefono",telefono);
-        obj_editor.putString("SP_Telefono",sp_telefono);
-        obj_editor.putString("Direccion",direccion);
-        obj_editor.putString("Email",email);
-        obj_editor.putString("SP_Email",sp_email);
-        obj_editor.putString("nacimiento",nacimiento);
-        obj_editor.putString("nivelEstudiosSeleccionado",nivelEstudiosSeleccionado);
-        obj_editor.putString("interesesSeleccionados",interesesSeleccionados.toString());
-        obj_editor.putString("recibirInfo",recibir_Info);
-        obj_editor.putString("FIN_CONTACTO","-");
-        Boolean guardo=obj_editor.commit();
-        Log.d("Guardo", "Guardo: " + guardo.toString());
-        Toast.makeText(this,"Se ha guardado correctamente",Toast.LENGTH_LONG).show();
+        // Obtener los contactos existentes como array
+        String contactosExistentes = preferencias.getString("lista_contactos", "[]");
+        try {
+            JSONArray contactosArray = new JSONArray(contactosExistentes);
+            contactosArray.put(contacto);  // Agregar el nuevo contacto
 
+            // Guardar la lista actualizada de contactos
+            editor.putString("lista_contactos", contactosArray.toString());
+            editor.apply();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        Toast.makeText(this, "Contacto guardado correctamente", Toast.LENGTH_LONG).show();
+
+        // Volver a la pantalla principal
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-
     }
 
 }

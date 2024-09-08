@@ -166,13 +166,12 @@
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/txt_nacimiento"
+                    android:id="@+id/editTextDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="@string/et_nacimiento"
-                    android:inputType="text"
-                    android:textSize="20sp" />
+                    android:inputType="date" />
 
                 <Button
                     android:id="@+id/button"

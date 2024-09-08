@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         txt_telefono = (EditText)findViewById(R.id.txt_telefono);
         txt_direccion = (EditText)findViewById(R.id.txt_direccion);
         txt_email = (EditText)findViewById(R.id.txt_email);
-        txt_nacimiento = (EditText)findViewById(R.id.txt_nacimiento);
+        txt_nacimiento = (EditText)findViewById(R.id.editTextDate);
 
         txt_nombre.addTextChangedListener(new SoloLetasTextWatcher(this, txt_nombre));
         txt_apellido.addTextChangedListener(new SoloLetasTextWatcher(this, txt_apellido));
